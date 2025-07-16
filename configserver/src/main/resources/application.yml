@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: "configServer"
+# When we are using class path to store all our configuration we need  to activate the native profile
+  profiles:
+    #active: native
+    active: git
+
+# File activation details
+  cloud:
+    config:
+      server:
+        #native:
+          #search-locations: "classpath:/config"
+          #search-locations: "file:///C://Users//Vaibhav//Documents//Config"
+        git:
+          uri: "https://github.com/eazybytes/eazybytes-config.git"
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+encrypt:
+  key: "AA1A3S5E7DE11FI13GIHO1JO7KULU"
+
+server:
+  port: 8071
+
